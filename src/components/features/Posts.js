@@ -1,6 +1,7 @@
 import { Card, Row, Col, Button } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { getAllPosts } from '../../redux/postsRedux'
+import { Link } from 'react-router-dom'
 
 const Posts = () => {
 
@@ -15,14 +16,16 @@ const Posts = () => {
       <Row xs={1} md={2} lg={3} className="g-4 mt-2">
         {
           posts.map(post => (
-            <Col>
+            <Col key={post.id} className="d-flex align-items-stretch">
               <Card>
-                <Card.Body>
+                <Card.Body className="d-flex flex-column">
                   <Card.Title className="mb-3">{post.title}</Card.Title>
                   <Card.Subtitle className="mt-2"><span className="fw-bold">Author: </span>{post.author}</Card.Subtitle>
                   <Card.Subtitle className="mt-2"><span className="fw-bold">Published: </span>{post.publishedDate}</Card.Subtitle>
                   <Card.Text className="mt-2">{post.shortDescription}</Card.Text>
-                  <Button variant="primary" className="mt-2">Read more</Button>
+                  <Link className="mt-auto" key={post.id} to={"/post/" + post.id}>
+                    <Button variant="primary">Read more</Button>
+                  </Link>
                 </Card.Body>
               </Card>
             </Col>
