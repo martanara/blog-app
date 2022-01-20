@@ -33,7 +33,7 @@ const SinglePost = () => {
           </Col>
           <Col xs={4} lg={2} className="d-flex flex-row-reverse align-items-start">
             <Button variant="outline-danger" onClick={handleShow}>Delete</Button>
-            <Link className="me-3" key={postData.id} to={"/post/edit/" + postData.id}>
+            <Link className="me-3" key={postData.id} to={`/post/edit/${postData.id}`}>
               <Button variant="outline-info">Edit</Button>
             </Link>
           </Col>
