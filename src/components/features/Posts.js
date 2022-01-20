@@ -11,7 +11,9 @@ const Posts = () => {
     <section>
       <div className="d-flex justify-content-between">
         <h2>All posts</h2>
-        <Button variant="outline-info" className="mt-2">Add Post</Button>
+        <Link className="mt-2" to={"/post/add"}>
+          <Button variant="outline-info" >Add Post</Button>
+        </Link>
       </div>
       <Row xs={1} md={2} lg={3} className="g-4 mt-2">
         {
