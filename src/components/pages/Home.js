@@ -1,6 +1,8 @@
+import Posts from '../features/Posts'
+
 const Home = () => {
   return (
-    <h1>Home</h1>
+    <Posts />
   )
 }
 
