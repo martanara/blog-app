@@ -9,6 +9,7 @@ import About from './components/pages/About';
 import NotFound from './components/pages/NotFound';
 import Footer from './components/views/Footer'
 import Categories from './components/pages/Categories'
+import CategoryView from './components/pages/CategoryView'
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/post/:id" element={<SinglePost />} />
+        <Route path="/categories/:categoryName" element={<CategoryView />} />
         <Route path="/post/add" element={<PostAdd />} />
         <Route path="/post/edit/:id" element={<PostEdit />} />
         <Route path="/about" element={<About />} />
