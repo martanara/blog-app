@@ -8,6 +8,7 @@ import PostEdit from './components/pages/PostEdit';
 import About from './components/pages/About';
 import NotFound from './components/pages/NotFound';
 import Footer from './components/views/Footer'
+import Categories from './components/pages/Categories'
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/post/add" element={<PostAdd />} />
         <Route path="/post/edit/:id" element={<PostEdit />} />
         <Route path="/about" element={<About />} />
+        <Route path="/categories" element={<Categories />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

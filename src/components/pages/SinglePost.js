@@ -7,11 +7,15 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react';
 import { removePost } from '../../redux/postsRedux'
 import dateToStr from '../../utils/dateToStr'
+import { getAllCategories } from '../../redux/categoriesRedux'
+import matchCategory from '../../utils/matchCategory'
 
 const SinglePost = () => {
 
   const { id } = useParams();
   const postData = useSelector(state => getPostId(state, id))
+
+  const categories = useSelector(state => getAllCategories(state))
 
   const [show, setShow] = useState(false);
 
@@ -41,6 +45,7 @@ const SinglePost = () => {
         </Row>
         <h3 className="mb-3">{postData.author}</h3>
         <h4 className="mb-4">{dateToStr(postData.publishedDate)}</h4>
+        <p className="mb-4">{matchCategory(categories, postData.category)}</p>
         <p dangerouslySetInnerHTML={{ __html: postData.content }} />
       </article>
       <Modal show={show} onHide={handleClose}>

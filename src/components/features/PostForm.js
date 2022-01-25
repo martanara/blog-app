@@ -7,7 +7,8 @@ import 'react-quill/dist/quill.snow.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from "react-hook-form";
-
+import { useSelector } from 'react-redux';
+import { getAllCategories } from '../../redux/categoriesRedux'
 
 const PostForm = ({ action, actionText, ...props }) => {
 
@@ -21,6 +22,8 @@ const PostForm = ({ action, actionText, ...props }) => {
 
   const [contentError, setContentError] = useState(false);
   const [dateError, setDateError] = useState(false);
+
+  const categories = useSelector(state => getAllCategories(state))
 
   const handleSubmit = () => {
     setContentError(!content)
@@ -59,6 +62,15 @@ const PostForm = ({ action, actionText, ...props }) => {
         <DatePicker selected={publishedDate} onChange={(date) => setPublishedDate(date)} />
         {dateError && <small className="d-block form-text text-danger mt-2">Date can't be empty</small>}
       </Form.Group>
+      <Form.Select>
+        {
+          categories.map(category => (
+            <option key={category.id} className="d-flex align-items-stretch">
+              {category.name}
+            </option>
+          ))
+        }
+      </ Form.Select>
       <Form.Group className="mb-3" controlId="formDescription">
         <Form.Label>Short description</Form.Label>
         <Form.Control 

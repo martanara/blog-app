@@ -1,12 +1,15 @@
 import { Card, Row, Col, Button } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { getAllPosts } from '../../redux/postsRedux'
+import { getAllCategories } from '../../redux/categoriesRedux'
 import { Link } from 'react-router-dom'
 import dateToStr from '../../utils/dateToStr'
+import matchCategory from '../../utils/matchCategory'
 
 const Posts = () => {
 
   const posts = useSelector(state => getAllPosts(state))
+  const categories = useSelector(state => getAllCategories(state))
 
   return (
     <section>
@@ -25,6 +28,7 @@ const Posts = () => {
                   <Card.Title className="mb-3">{post.title}</Card.Title>
                   <Card.Subtitle className="mt-2"><span className="fw-bold">Author: </span>{post.author}</Card.Subtitle>
                   <Card.Subtitle className="mt-2"><span className="fw-bold">Published: </span>{dateToStr(post.publishedDate)}</Card.Subtitle>
+                  <Card.Subtitle className="mt-2"><span className="fw-bold">Category: </span>{matchCategory(categories, post.category)}</Card.Subtitle>
                   <Card.Text className="mt-2">{post.shortDescription}</Card.Text>
                   <Link className="mt-auto" to={`/post/${post.id}`}>
                     <Button variant="primary">Read more</Button>
